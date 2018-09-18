@@ -11,6 +11,7 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
+        \App\Tag::truncate();
         $items = [
             ['name' => 'Tag 1'            
             ],

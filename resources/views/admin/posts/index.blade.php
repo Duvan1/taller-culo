@@ -17,6 +17,9 @@
 	<div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+              </button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

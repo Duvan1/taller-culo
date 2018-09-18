@@ -23,6 +23,9 @@ Route::group([
 		Route::get('posts','AdminController@index')->name('admin.posts.index');
 		Route::get('posts/create','AdminController@create')->name('admin.ports.create');
 		Route::post('posts','AdminController@store')->name('admin.post.store');
+		Route::get('posts/{post}','AdminController@edit')->name('admin.posts.edit');
+		Route::put('posts/{post}','AdminController@update')->name('admin.posts.update');
+		Route::post('posts/{post}/photos','PhotosController@store')->name('admin.posts.photos.store');
 		Route::get('/', function () {
 		    return view('admin.dashboard');
 		})->middleware('auth')->name('dashboard');

@@ -12,6 +12,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        \App\Post::truncate();
         $items = [
             ['title' => 'Post 1',
              'url' => str_slug('Post 1'),

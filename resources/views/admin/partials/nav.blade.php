@@ -10,7 +10,7 @@
         </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href="{{route('admin.ports.create')}}">Crear</a></li>
+      <li><a href="#" data-toggle="modal" data-target="#exampleModal">Crear</a></li>
       <li {{request()->is('admin/posts') ? 'class=active' : ''}}><a href="{{route('admin.posts.index')}}">ver</a></li>
     </ul>
   </li>

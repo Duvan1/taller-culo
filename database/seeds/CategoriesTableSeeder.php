@@ -11,6 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        \App\Category::truncate();
         $items = [
             ['name' => 'Category 1'],
             ['name' => 'Category 2'],

@@ -402,5 +402,6 @@ desired effect
     })
   })
 </script>
+@include('admin.posts.create')
 </body>
 </html>

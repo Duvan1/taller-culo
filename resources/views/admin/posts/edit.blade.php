@@ -115,14 +115,17 @@
 
 	    CKEDITOR.replace('editor');
 	    
-	    new Dropzone('.dropzone',{
+	    myDropzone = new Dropzone('.dropzone',{
 	    	url: '/directory/public/admin/posts/{{$post->id}}/photos',
-	    	acceptedFiles: 'image/*';
+	    	acceptedFiles: 'image/*',
+	    	maxFilesize: 2,
+	    	paramName: 'photo',
 	    	headers: {
 	    		'X-CSRF-TOKEN': '{{ csrf_token() }}'
 	    	},
 	    	dictDefaultMessage: 'Arrastre las fotos aquí'
 	    });
+
 	    Dropzone.autoDiscover = false;
 	</script> 
  @endpush

@@ -19,9 +19,13 @@ class Post extends Model
     {
     	return $this->belongsTo(Category::class);//relacion con categorias 1:n
     }
+    public function photos()
+    {
+        return $this.>hasMany(Photo::class);
+    }
     public function tags()
     {
-    	return $this->belongsToMany(Tag::class);//relacion con categorias 1:n
+    	return $this->belongsToMany(Tag::class);//relacion con tags n:n
     }
     public function scopePublished($query)
     {

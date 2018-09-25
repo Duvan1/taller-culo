@@ -17,11 +17,18 @@ class PhotosController extends Controller
     	]);    	
     	$post = Post::find($id);
     	$photo = request()->file('photo')->store('public');  
-    	$photoUrl = Storage::url('app/'.$photo);
+    	$photoUrl = Storage::url($photo);
     	Photo::create([
     		'url' => $photoUrl,
     		'post_id' => $id
     	]);
 
+    }
+    public function destroy(Photo $photo)
+    {
+        $photo->delete();
+        $photoPath = str_replace('storage', 'public', $photo->url);
+        Storage::delete($photoPath);
+        return back()->with('flash','Foto Eliminada');
     }
 }

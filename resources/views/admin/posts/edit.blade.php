@@ -15,6 +15,27 @@
 	@if(session()->has('flash'))
         <div class="alert alert-success">{{session('flash')}}</div>
     @endif
+    @if($post->photos->count())
+    <div class="col-md-12">
+		<div class="box box-primary">
+			<div class="box-body">
+				<div class="row">
+						@foreach($post->photos as $photo)
+							<form method="POST" action="{{route('admin.photos.destroy', $photo)}}">
+								{{method_field('DELETE')}} {{csrf_field()}}
+								<div class="col-md-2">
+									<button class="btn btn-danger btn-xs" style="position: absolute;">
+										<i class="fa fa-remove"></i>
+									</button>
+									<img class="img-responsive" src="{{url($photo->url)}}">
+								</div>
+							</form>
+						@endforeach
+					</div>
+			</div>
+		</div> 
+	</div>
+		@endif
 	<div class="row">	
 		<form method="POST" action="{{route('admin.posts.update', $post)}}">	
 		{{ csrf_field()}}	{{method_field('PUT')}}
@@ -31,6 +52,12 @@
 							<textarea name="body" id="editor" rows="10" class="form-control" placeholder="ingrese el texto de su blog">{{old('body', $post->body)}}</textarea>
 							{!! $errors->first('body','<span class="help-block">:message</span>') !!}
 						</div>
+						<div class="form-group {{ $errors->has('iframe') ? 'has-error' : ''}}">
+							<label for="extract">Contenido embebido</label>		
+							<textarea name="iframe" id="editor" rows="2" class="form-control" placeholder="ingrese el contenido embebido">{{old('iframe', $post->iframe)}}</textarea>
+							{!! $errors->first('iframe','<span class="help-block">:message</span>') !!}
+						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -61,11 +88,11 @@
             	</select>
             	{!! $errors->first('category','<span class="help-block">:message</span>') !!}
             </div>
-						<div class="form-group {{ $errors->has('excerpt') ? 'has-error' : ''}}">
-							<label for="extract">extract</label>		
-							<textarea name="excerpt" id="extract" class="form-control" placeholder="ingrese el extracto de su blog">{{old('excerpt', $post->excerpt)}}</textarea>	
-							{!! $errors->first('category','<span class="help-block">:message</span>') !!}
-						</div>
+				<div class="form-group {{ $errors->has('excerpt') ? 'has-error' : ''}}">
+					<label for="extract">extract</label>		
+					<textarea name="excerpt" id="extract" class="form-control" placeholder="ingrese el extracto de su blog">{{old('excerpt', $post->excerpt)}}</textarea>	
+					{!! $errors->first('category','<span class="help-block">:message</span>') !!}
+				</div>
 						<div class="form-group">
               <label>Seleccione las etiquetas</label>
               <select class="form-control select2" multiple="multiple" data-placeholder="etiquetas"
@@ -88,6 +115,7 @@
 				</div>
 			</div>	
 		</form>
+		
 	</div>
 
 	
@@ -114,6 +142,7 @@
 	    $('.select2').select2();
 
 	    CKEDITOR.replace('editor');
+	    CKEDITOR.config.height =315;
 	    
 	    myDropzone = new Dropzone('.dropzone',{
 	    	url: '/directory/public/admin/posts/{{$post->id}}/photos',

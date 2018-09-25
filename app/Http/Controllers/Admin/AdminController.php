@@ -55,6 +55,7 @@ class AdminController extends Controller
       $post->title = $request->get('title');
       $post->url = str_slug($request->get('title'));
       $post->body = $request->get('body');
+      $post->iframe = $request->get('iframe');
       $post->excerpt = $request->get('excerpt');
       $post->published_at = Carbon::parse($request->get('published_at'));
       $post->category_id = $request->get('category');      

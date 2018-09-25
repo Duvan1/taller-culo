@@ -26,6 +26,7 @@ Route::group([
 		Route::get('posts/{post}','AdminController@edit')->name('admin.posts.edit');
 		Route::put('posts/{post}','AdminController@update')->name('admin.posts.update');
 		Route::post('posts/{post}/photos','PhotosController@store')->name('admin.posts.photos.store');
+		Route::delete('photos/{photo}','PhotosController@destroy')->name('admin.photos.destroy');
 		Route::get('/', function () {
 		    return view('admin.dashboard');
 		})->middleware('auth')->name('dashboard');

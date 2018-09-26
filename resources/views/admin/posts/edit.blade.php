@@ -76,17 +76,17 @@
               </div>
               <!-- /.input group -->
             </div>
-            <div class="form-group {{ $errors->has('category') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
             	<label>Categoria</label>
-            	<select class="form-control select2" name="category">
+            	<select class="form-control select2" name="category_id">
             		<option value="">Seleccione una opción</option>
             		@foreach($categories as $category)
             		<option value="{{$category->id}}"
-            			{{old('category', $post->category_id) == $category->id ? 'selected':''}}>{{$category->name}}</option>         		
+            			{{old('category_id', $post->category_id) == $category->id ? 'selected':''}}>{{$category->name}}</option>         		
 
             		@endforeach
             	</select>
-            	{!! $errors->first('category','<span class="help-block">:message</span>') !!}
+            	{!! $errors->first('category_id','<span class="help-block">:message</span>') !!}
             </div>
 				<div class="form-group {{ $errors->has('excerpt') ? 'has-error' : ''}}">
 					<label for="extract">extract</label>		

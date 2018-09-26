@@ -14,6 +14,8 @@
 
 Route::get('/', 'PostController@index');
 Route::get('/posts/{post}', 'PostController@show')->name('post.show');
+Route::get('/categorias/{category}', 'CategoryController@show')->name('category.show');
+Route::get('/tags/{tag}', 'TagController@show')->name('tag.show');
 
 Route::group([
 	'prefix'=>'admin',

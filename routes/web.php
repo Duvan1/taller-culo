@@ -27,6 +27,8 @@ Route::group([
 		Route::post('posts','AdminController@store')->name('admin.post.store');
 		Route::get('posts/{post}','AdminController@edit')->name('admin.posts.edit');
 		Route::put('posts/{post}','AdminController@update')->name('admin.posts.update');
+		Route::delete('posts/{post}','AdminController@destroy')->name('admin.post.destroy');
+		
 		Route::post('posts/{post}/photos','PhotosController@store')->name('admin.posts.photos.store');
 		Route::delete('photos/{photo}','PhotosController@destroy')->name('admin.photos.destroy');
 		Route::get('/', function () {

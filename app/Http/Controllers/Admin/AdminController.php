@@ -49,8 +49,17 @@ class AdminController extends Controller
       $post->save();
       $post->syncTags($request->get('tags'));
 
-    return redirect()->route('admin.posts.edit', $post)->with('flash', 'publicación guardada.');
+      return redirect()->route('admin.posts.edit', $post)->with('flash', 'publicación guardada.');
 
+    }
+
+    public function destroy(Post $post)
+    {
+      
+      
+      $post->delete();
+
+      return redirect()->route('admin.posts.index', $post)->with('flash', 'publicación eliminada.');
     }
     
 }

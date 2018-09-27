@@ -39,7 +39,11 @@
 	                		<td>
                         <a href="{{ route('post.show', $post) }}" class="btn btn-xs btn-info" target="_blank"><i class="fa fa-eye"></i></a>
 	                			<a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
-	                			<a href="#" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                        <form action="{{route('admin.post.destroy', $post)}}" method="POST" style="display: inline;">
+                            {{csrf_field()}} {{ method_field('DELETE')}}
+	                			  <button class="btn btn-xs btn-danger"
+                          onclick="return confirm('¿Estás seguro que desea eliminar el post?')"><i class="fa fa-times"></i></button>
+                        </form>
 	                		</td>
                 		</tr>
                 	@endforeach                

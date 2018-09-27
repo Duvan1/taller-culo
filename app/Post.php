@@ -11,6 +11,17 @@ class Post extends Model
       'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id', ];
     protected $dates = ['published_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($post)
+        {
+            $post->tags()->detach();
+            $post->photos->each->delete();
+        });
+    }
+
     public function getRouteKeyName()
     {
         return 'url';

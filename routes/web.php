@@ -13,6 +13,10 @@
 //use App\Post;
 
 Route::get('/', 'PostController@index');
+Route::get('about', 'PostController@about')->name('page.about');
+Route::get('archive', 'PostController@archive')->name('page.archive');
+Route::get('contact', 'PostController@contact')->name('page.contact');
+
 Route::get('/posts/{post}', 'PostController@show')->name('post.show');
 Route::get('/categorias/{category}', 'CategoryController@show')->name('category.show');
 Route::get('/tags/{tag}', 'TagController@show')->name('tag.show');

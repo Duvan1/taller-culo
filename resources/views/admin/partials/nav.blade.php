@@ -10,8 +10,12 @@
         </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href="#" data-toggle="modal" data-target="#exampleModal">Crear</a></li>
       <li {{request()->is('admin/posts') ? 'class=active' : ''}}><a href="{{route('admin.posts.index')}}">ver</a></li>
+      @if(request()->is('admin/posts/*'))
+        <li><a href="{{route('admin.posts.index','#create')}}">Crear</a></li>
+      @else
+        <li><a href="#" data-toggle="modal" data-target="#exampleModal">Crear</a></li>
+      @endif      
     </ul>
   </li>
 </ul>

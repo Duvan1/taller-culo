@@ -17,9 +17,24 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        //$post = Post::find($id);
-    	return view('posts.show', compact('post'));
+        //if ($post->isPublished() || auth()->check()) {
+        //    return view('posts.show', compact('post'));
+        //}
+        abort(404);    	
     }
 
-   
+    public function about()
+    {
+        return view('page.about');
+    }
+
+    public function contact()
+    {
+        return view('page.contact');
+    }
+
+    public function archive()
+    {
+        return view('page.archive');
+    }
 }

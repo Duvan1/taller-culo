@@ -403,5 +403,22 @@ desired effect
   })
 </script>
 @include('admin.posts.create')
+@unless(request()->is('admin/posts/*'))
+  <script>
+    if(window.location.hash === '#create'){
+      $('#exampleModal').modal('show');
+    }
+
+    $('#exampleModal').on('hide.bs.modal', function() {
+      window.location.hash = '#';
+    });
+
+    $('#exampleModal').on('shown.bs.modal', function() {
+      $('#post-title').focus();
+      window.location.hash = '#create';
+    });
+
+  </script>
+@endunless
 </body>
 </html>

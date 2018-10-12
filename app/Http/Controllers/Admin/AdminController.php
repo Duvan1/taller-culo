@@ -30,7 +30,11 @@ class AdminController extends Controller
     public function store(Request $request)
     {
       $this->validate($request,['title'=>'required|min:3']);
-      $post = Post::create($request->only('title'));
+      //$post = Post::create($request->only('title'));
+      $post = Post::create([
+        'title' => $request->get('title'),
+        'user_id' => auth()->id()
+      ])
       return redirect()->route('admin.posts.edit', $post);
     }
 

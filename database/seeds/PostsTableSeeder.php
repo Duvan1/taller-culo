@@ -19,28 +19,32 @@ class PostsTableSeeder extends Seeder
              'excerpt' => 'fa fa-cutlery',
              'body' => '<p>jncsdjbvdfp </p>',
              'published_at' => Carbon::now(),
-             'category_id' => 1             
+             'category_id' => 1,
+             'user_id' => 1            
             ],
             ['title' => 'Post 2',
             'url' => str_slug('Post 2'),
              'excerpt' => 'fa fa-cutlery',
              'body' => '<p>jncsdjbvdfp </p>',
              'published_at' => Carbon::now(),
-             'category_id' => 1             
+             'category_id' => 1,
+             'user_id' => 1              
             ],
             ['title' => 'Post 3',
             'url' => str_slug('Post 3'),
              'excerpt' => 'fa fa-cutlery',
              'body' => '<p>jncsdjbvdfp </p>',
              'published_at' => Carbon::now(),
-             'category_id' => 2             
+             'category_id' => 2,
+             'user_id' => 1              
             ],
             ['title' => 'Post 4',
             'url' => str_slug('Post 4'),
              'excerpt' => 'fa fa-cutlery',
              'body' => '<p>jncsdjbvdfp </p>',
              'published_at' => Carbon::now(),
-             'category_id' => 2            
+             'category_id' => 2,
+             'user_id' => 1             
             ],
         ];
 

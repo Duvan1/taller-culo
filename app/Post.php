@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 	protected $fillable = [
-      'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id', ];
+      'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id', 'user_id'];
     protected $dates = ['published_at'];
 
     protected static function boot()
@@ -38,6 +38,10 @@ class Post extends Model
     public function tags()
     {
     	return $this->belongsToMany(Tag::class);//relacion con tags n:n
+    }
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function scopePublished($query)
     {
